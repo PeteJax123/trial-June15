@@ -6,3 +6,23 @@ terraform {
     }
   }
 }
+
+terraform {
+  backend "remote" {
+    hostname = "tfe.eastus.cloudapp.azure.com"
+    organization = "DanielTest"
+
+    workspaces {
+      name = "june-06-WS-03"
+    }
+  }
+}
+
+resource "azurerm_resource_group" "myresourcegroup" {
+  name     = "June-TFC-Org-THREE"
+  location = "canadaeast"
+
+  tags = {
+    environment = "Production"
+  }
+}
